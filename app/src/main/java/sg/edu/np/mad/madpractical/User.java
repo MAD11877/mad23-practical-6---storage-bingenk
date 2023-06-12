@@ -6,7 +6,7 @@ public class User {
     int id;
     static boolean followed;
 
-    public User() {
+    public User(String s, String s1, int i, boolean b) {
 
     }
 

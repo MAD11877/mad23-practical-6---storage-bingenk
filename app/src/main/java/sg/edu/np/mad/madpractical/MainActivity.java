@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.w3c.dom.Text;
 
 
@@ -26,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+
         username = findViewById(R.id.textView3);
         description = findViewById(R.id.textView4);
         messageButton = findViewById(R.id.button2);
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         Intent receivingEnd = getIntent();
         String username = receivingEnd.getStringExtra("USERNAME");
         String description = receivingEnd.getStringExtra("DESCRIPTION");
+        int id = getIntent().getIntExtra("id", 0);
+        final boolean[] followed = {getIntent().getBooleanExtra("followed", false)};
 
         this.username.setText(username);
         this.description.setText(description);
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     isFollowing = true;
                     showToast("Followed");
                 }
+                dbHandler.updateUser(new User(username, description, id, followed[0]));
+
             }
 
         });

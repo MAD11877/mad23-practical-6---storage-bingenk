@@ -24,7 +24,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
         private final ImageView clickableImage;
-
         private final ImageView bigImage;
         private final TextView nameTxt;
         private final TextView descTxt;
